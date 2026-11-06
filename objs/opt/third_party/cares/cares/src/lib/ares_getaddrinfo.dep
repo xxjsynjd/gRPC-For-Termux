@@ -1,0 +1,34 @@
+/data/data/com.termux/files/home/grpc/objs/opt/third_party/cares/cares/src/lib/ares_getaddrinfo.o: \
+  third_party/cares/cares/src/lib/ares_getaddrinfo.c \
+  third_party/cares/cares/src/lib/ares_private.h \
+  third_party/cares/cares/src/lib/ares_setup.h \
+  third_party/cares/config_linux/ares_config.h \
+  third_party/cares/ares_build.h third_party/cares/cares/include/ares.h \
+  third_party/cares/cares/include/ares_version.h \
+  third_party/cares/cares/include/ares_dns_record.h \
+  third_party/cares/cares/src/lib/include/ares_mem.h \
+  third_party/cares/cares/src/lib/ares_ipv6.h \
+  third_party/cares/cares/src/lib/util/ares_math.h \
+  third_party/cares/cares/src/lib/util/ares_time.h \
+  third_party/cares/cares/src/lib/util/ares_rand.h \
+  third_party/cares/cares/src/lib/include/ares_array.h \
+  third_party/cares/cares/src/lib/include/ares_llist.h \
+  third_party/cares/cares/src/lib/dsa/ares_slist.h \
+  third_party/cares/cares/src/lib/include/ares_htable_strvp.h \
+  third_party/cares/cares/src/lib/include/ares_htable_szvp.h \
+  third_party/cares/cares/src/lib/include/ares_htable_asvp.h \
+  third_party/cares/cares/src/lib/include/ares_htable_dict.h \
+  third_party/cares/cares/src/lib/include/ares_htable_vpvp.h \
+  third_party/cares/cares/src/lib/include/ares_htable_vpstr.h \
+  third_party/cares/cares/src/lib/record/ares_dns_multistring.h \
+  third_party/cares/cares/src/lib/include/ares_buf.h \
+  third_party/cares/cares/src/lib/record/ares_dns_private.h \
+  third_party/cares/cares/src/lib/util/ares_iface_ips.h \
+  third_party/cares/cares/src/lib/util/ares_threads.h \
+  third_party/cares/cares/src/lib/ares_socket.h \
+  third_party/cares/cares/src/lib/ares_conn.h \
+  third_party/cares/cares/src/lib/include/ares_str.h \
+  third_party/cares/cares/src/lib/str/ares_strsplit.h \
+  third_party/cares/cares/src/lib/util/ares_uri.h \
+  third_party/cares/cares/include/ares_nameser.h \
+  third_party/cares/cares/include/ares_dns.h
