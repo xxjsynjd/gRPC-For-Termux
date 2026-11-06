@@ -1,105 +1,92 @@
-# gRPC – An RPC library and framework
+# gRPC/Grpcio For Termux(完全体)
 
-gRPC is a modern, open source, high-performance remote procedure call (RPC)
-framework that can run anywhere. gRPC enables client and server applications to
-communicate transparently, and simplifies the building of connected systems.
+这是 `grpcio` 在 Termux 原生环境(Android AArch64, Python 3.14)下从源码编译的完全体备份仓库。
 
-<table>
-  <tr>
-    <td><b>Homepage:</b></td>
-    <td><a href="https://grpc.io/">grpc.io</a></td>
-  </tr>
-  <tr>
-    <td><b>Mailing List:</b></td>
-    <td><a href="https://groups.google.com/forum/#!forum/grpc-io">grpc-io@googlegroups.com</a></td>
-  </tr>
-</table>
+包含：
+1. 经过Patch的 **全量源码树**
+2. 编译产生的所有 **中间产物**
+3. 切分后的 **核心 `.so` 二进制文件**
+4. 打包好的 **`.whl` 预编译轮子**
 
-[![Join the chat at https://gitter.im/grpc/grpc](https://badges.gitter.im/grpc/grpc.svg)](https://gitter.im/grpc/grpc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+## 🛠 核心Patch记录
 
-## To start using gRPC
+由于Android使用Bionic libc，不存在独立的 `librt.so`，导致gRPC官方 `setup.py` 在Android上链接失败。通过修改 `setup.py` 的第415行，成功绕过该问题：
 
-To maximize usability, gRPC supports the standard method for adding dependencies
-to a user's chosen language (if there is one). In most languages, the gRPC
-runtime comes as a package available in a user's language package manager.
+```python
+# 修改前
+if "linux" in sys.platform:
+    EXTENSION_LIBRARIES += ("rt",)
 
-For instructions on how to use the language-specific gRPC runtime for a project,
-please refer to these documents
+# 修改后
+if "linux" in sys.platform and "ANDROID_ROOT" not in os.environ:
+    EXTENSION_LIBRARIES += ("rt",)
+```
+编译环境变量：
+```bash
+export TMPDIR=~/tmp-build
+```
+unset GRPC_PYTHON_BUILD_SYSTEM_OPENSSL GRPC_PYTHON_BUILD_SYSTEM_ZLIB GRPC_PYTHON_BUILD_SYSTEM_CARES GRPC_PYTHON_BUILD_SYSTEM_RE2 GRPC_PYTHON_BUILD_SYSTEM_ABSL
+cat << 'EOF' > README.md
+# gRPC/Grpcio For Termux(完全体)
 
--   [C++](src/cpp): follow the instructions under the `src/cpp` directory
--   [C#/.NET](https://github.com/grpc/grpc-dotnet): NuGet packages
-    `Grpc.Net.Client`, `Grpc.AspNetCore.Server`
--   [Dart](https://github.com/grpc/grpc-dart): pub package `grpc`
--   [Go](https://github.com/grpc/grpc-go): `go get google.golang.org/grpc`
--   [Java](https://github.com/grpc/grpc-java): Use JARs from Maven Central
-    Repository
--   [Kotlin](https://github.com/grpc/grpc-kotlin): Use JARs from Maven Central
-    Repository
--   [Node](https://github.com/grpc/grpc-node): `npm install @grpc/grpc-js`
--   [Objective-C](src/objective-c): Add `gRPC-ProtoRPC` dependency to podspec
--   [PHP](src/php): `pecl install grpc`
--   [Python](src/python/grpcio): `pip install grpcio`
--   [Ruby](src/ruby): `gem install grpc`
--   [WebJS](https://github.com/grpc/grpc-web): follow the grpc-web instructions
+这是 `grpcio` 在Termux原生环境(Android AArch64, Python 3.14)下从源码编译的完全体备份仓库。
 
-Per-language quickstart guides and tutorials can be found in the
-[documentation section on the grpc.io website](https://grpc.io/docs/). Code
-examples are available in the [examples](examples) directory.
+包含：
+1. 经过Patch的 **全量源码树**
+2. 编译产生的所有 **中间产物**
+3. 切分后的 **核心 `.so` 二进制文件**
+4. 打包好的 **`.whl` 预编译轮子**
 
-Precompiled bleeding-edge package builds of gRPC `master` branch's `HEAD` are
-uploaded daily to [packages.grpc.io](https://packages.grpc.io).
+## 🛠 核心Patch记录
 
-## To start developing gRPC
+由于Android使用Bionic libc，不存在独立的 `librt.so`，导致 gRPC 官方 `setup.py` 在Android上链接失败。通过修改 `setup.py` 的第 415 行，成功绕过该问题：
 
-Contributions are welcome!
+# gRPC/Grpcio For Termux(完全体)
 
-Please read [How to contribute](CONTRIBUTING.md) which will guide you through
-the entire workflow of how to build the source code, how to run the tests, and
-how to contribute changes to the gRPC codebase. For detailed C++ build instructions,
-see [Building from source](BUILDING.md). The "How to contribute" document
-also contains info on how the contribution process works and contains best
-practices for creating contributions.
+这是 `grpcio` 在Termux原生环境(Android AArch64, Python 3.14)下从源码编译的完全体备份仓库。
 
-## Troubleshooting
+包含：
+1. 经过Patch的 **全量源码树**
+2. 编译产生的所有 **中间产物**
+3. 切分后的 **核心 `.so` 二进制文件**
+4. 打包好的 **`.whl` 预编译轮子**
 
-Sometimes things go wrong. Please check out the
-[Troubleshooting guide](TROUBLESHOOTING.md) if you are experiencing issues with
-gRPC.
+## 🛠 核心Patch记录
 
-## Performance
+由于Android使用Bionic libc，不存在独立的 `librt.so`，导致 gRPC 官方 `setup.py` 在Android上链接失败。通过修改 `setup.py` 的第 415 行，成功绕过该问题：
 
-See the [Performance dashboard](https://grafana-dot-grpc-testing.appspot.com/)
-for performance numbers of master branch daily builds.
+```python
+# 修改前
+if "linux" in sys.platform:
+    EXTENSION_LIBRARIES += ("rt",)
 
-## Concepts
+# 修改后
+if "linux" in sys.platform and "ANDROID_ROOT" not in os.environ:
+    EXTENSION_LIBRARIES += ("rt",)
+```
+编译环境变量：
+```bash
+export TMPDIR=~/tmp-build
+unset GRPC_PYTHON_BUILD_SYSTEM_OPENSSL GRPC_PYTHON_BUILD_SYSTEM_ZLIB GRPC_PYTHON_BUILD_SYSTEM_CARES GRPC_PYTHON_BUILD_SYSTEM_RE2 GRPC_PYTHON_BUILD_SYSTEM_ABSL
+```
+# ⚠️ 注意：.so文件已被切分
 
-See [gRPC Concepts](CONCEPTS.md)
+由于GitHub限制单文件不能超过100 MB，而编译生成的cygrpc.cpython-314-aarch64-linux-android.so高达243MB，因此被强行切分为了三个文件，存放在：
+pyb/lib.android-24-arm64_v8a-cpython-314/grpc/_cython/
 
-## About This Repository
+切分文件列表：
 
-This repository contains source code for gRPC libraries implemented in multiple
-languages written on top of a shared C++ core library [src/core](src/core).
+· cygrpc_part_aa (约90MB)
+· cygrpc_part_ab (约90MB)
+· cygrpc_part_ac (约63MB)
+## 如何合并还原
 
-Libraries in different languages may be in various states of development. We are
-seeking contributions for all of these libraries:
+如果你需要用到源码树中的这个.so文件，请先进入该目录并执行合并命令：
+```bash
+cd pyb/lib.android-24-arm64_v8a-cpython-314/grpc/_cython/
+cat cygrpc_part_* > cygrpc.cpython-314-aarch64-linux-android.so
+```
 
-Language                  | Source
-------------------------- | ----------------------------------
-Shared C++ [core library] | [src/core](src/core)
-C++                       | [src/cpp](src/cpp)
-Ruby                      | [src/ruby](src/ruby)
-Python                    | [src/python](src/python)
-PHP                       | [src/php](src/php)
-C# (core library based)   | [src/csharp](src/csharp)
-Objective-C               | [src/objective-c](src/objective-c)
+# 🚀 最简单的安装方式
 
-Language             | Source repo
--------------------- | --------------------------------------------------
-Java                 | [grpc-java](https://github.com/grpc/grpc-java)
-Kotlin               | [grpc-kotlin](https://github.com/grpc/grpc-kotlin)
-Go                   | [grpc-go](https://github.com/grpc/grpc-go)
-NodeJS               | [grpc-node](https://github.com/grpc/grpc-node)
-WebJS                | [grpc-web](https://github.com/grpc/grpc-web)
-Dart                 | [grpc-dart](https://github.com/grpc/grpc-dart)
-.NET (pure C# impl.) | [grpc-dotnet](https://github.com/grpc/grpc-dotnet)
-Swift                | [grpc-swift](https://github.com/grpc/grpc-swift)
+如果你只是想使用gRPC，不需要管那一堆源码，直接使用仓库根目录下的预编译Wheel包即可(里面已经包含了合并好的完整.so)：
